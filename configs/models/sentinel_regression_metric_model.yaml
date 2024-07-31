@@ -1,0 +1,28 @@
+fake_regression_metric:
+  class_path: sentinel_metric.models.SentinelRegressionMetric
+  init_args:
+    name: sentinel_regression_metric
+    optimizer: RAdam
+    learning_rate: 1e-6
+    batch_size: 8
+    shuffle: True
+    train_data:
+      - data/da/train/1720-da.csv
+    validation_data:
+      - data/da/dev/wmt-ende-newstest2021.csv
+      - data/da/dev/wmt-enru-newstest2021.csv
+      - data/da/dev/wmt-zhen-newstest2021.csv
+    keep_embeddings_frozen: False
+    encoder_model: XLM-RoBERTa
+    pretrained_model: xlm-roberta-large
+    dropout: 0.1
+    load_pretrained_weights: True
+    hidden_sizes:
+      - 512
+      - 128
+    activations: Tanh
+    sent_to_use: mt
+
+trainer: ../trainer.yaml
+model_checkpoint: ../model_checkpoint.yaml
+wandb_logger: ../wandb_logger.yaml
