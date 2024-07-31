@@ -81,5 +81,23 @@ As output, we get the following information:
 0.971099853515625
 ```
 
+## Cite this work
+This work has been published at ACL 2024 (main conference). If you use any part, please consider citing our paper as follows:
+
+```bibtex
+@inproceedings{perrella-etal-2024-guardians,
+    title = "Guardians of the Machine Translation Meta-Evaluation: Sentinel Metrics Fall In!",
+    author = "Perrella, Stefano and
+      Proietti, Lorenzo  and
+      Scirè, Alessandro and
+      Barba, Edoardo and
+      Navigli, Roberto",
+        booktitle = "Proceedings of the Annual Meeting of the Association for Computational Linguistics (ACL 2024)",
+    year      = "2024",
+    address   = "Bangkok, Thailand",
+    publisher = "Association for Computational Linguistics",
+}
+```
+
 ## License
 This work is licensed under [Creative Commons Attribution-ShareAlike-NonCommercial 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
