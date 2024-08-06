@@ -37,7 +37,7 @@ The sentinel metric models are trained using Direct Assessments (DA) and Multidi
 
 ## Models
 
-The following is a comprehensive list of the available sentinel metric models, including their inputs and the data used for training:
+The following is a comprehensive list of the available sentinel metric models, including their inputs and the data used for training (z-scores):
 
 | HF Model Name                                                                           | Input                 | Training Data |
 |-----------------------------------------------------------------------------------------|-----------------------|---------------|
