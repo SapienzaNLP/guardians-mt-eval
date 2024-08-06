@@ -1,7 +1,7 @@
 import json
 import logging
 import warnings
-from pathlib import Path
+from argparse import Namespace
 
 from jsonargparse import ActionConfigFile, ArgumentParser, namespace_to_dict
 from pytorch_lightning import seed_everything
@@ -13,13 +13,13 @@ from pytorch_lightning.callbacks import (
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.trainer.trainer import Trainer
 
-from sentinel_metric.models import SentinelRegressionMetric
+from sentinel_metric.models import SentinelRegressionMetric, RegressionMetricModel
 
 logger = logging.getLogger(__name__)
 
 
 def read_arguments() -> ArgumentParser:
-    parser = ArgumentParser(description="Command for training metric models.")
+    parser = ArgumentParser(description="Command to train regression metric models.")
     parser.add_argument(
         "--seed-everything",
         type=int,
@@ -27,7 +27,9 @@ def read_arguments() -> ArgumentParser:
         help="Training Seed.",
     )
     parser.add_argument("--cfg", action=ActionConfigFile)
-    parser.add_subclass_arguments(SentinelRegressionMetric, "sentinel_regression_metric")
+    parser.add_subclass_arguments(
+        SentinelRegressionMetric, "sentinel_regression_metric"
+    )
     parser.add_subclass_arguments(ModelCheckpoint, "model_checkpoint")
     parser.add_subclass_arguments(WandbLogger, "wandb_logger")
     parser.add_argument("--wandb-logger-entity", type=str, help="Wandb entity name.")
@@ -35,7 +37,7 @@ def read_arguments() -> ArgumentParser:
     parser.add_argument(
         "--load-from-checkpoint",
         type=str,
-        help="Loads a model checkpoint for fine-tuning",
+        help="Loads a model checkpoint for fine-tuning.",
         default=None,
     )
     parser.add_argument(
@@ -46,7 +48,15 @@ def read_arguments() -> ArgumentParser:
     return parser
 
 
-def initialize_trainer(configs) -> Trainer:
+def initialize_trainer(configs: Namespace) -> Trainer:
+    """Initialize and return a Pytorch Lightning Trainer object from the input configurations.
+
+    Args:
+        configs (Namespace): Configurations to use for the Trainer.
+
+    Returns:
+        Trainer: Pytorch Lightning Trainer object to use for training.
+    """
     checkpoint_callback = ModelCheckpoint(
         **namespace_to_dict(configs.model_checkpoint.init_args)
     )
@@ -66,7 +76,15 @@ def initialize_trainer(configs) -> Trainer:
     return trainer
 
 
-def initialize_model(configs):
+def initialize_model(configs: Namespace) -> RegressionMetricModel:
+    """Initialize and return a RegressionMetricModel instance to train from the input configurations.
+
+    Args:
+        configs (Namespace): Configurations to use for the model.
+
+    Returns:
+        RegressionMetricModel: Model instance to train.
+    """
     print("MODEL ARGUMENTS: ")
 
     if configs.sentinel_regression_metric is not None:
@@ -95,6 +113,7 @@ def initialize_model(configs):
 
 
 def train_command() -> None:
+    """Start the Pytorch Lightning training of a RegressionMetricModel instance."""
     parser = read_arguments()
     cfg = parser.parse_args()
     seed_everything(cfg.seed_everything, workers=True)

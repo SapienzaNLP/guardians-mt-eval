@@ -1,0 +1,96 @@
+lang:                                     en-de     he-en     zh-en
+level:                                      seg       seg       seg
+corr_fcn:                               pearson   pearson   pearson
+metric                       avg-corr     task1     task2     task3
+---------------------------  --------  --------  --------  --------
+XCOMET-Ensemble               1 0.740   2 0.538   1 0.479   3 0.421
+mbr-metricx-qe[noref]         2 0.738   1 0.543   2 0.448   1 0.436
+GEMBA-MQM[noref]              3 0.724  10 0.482   5 0.431   2 0.434
+MetricX-23                    4 0.720   5 0.507   3 0.441   6 0.373
+_COMET                        5 0.715   4 0.508   7 0.421   9 0.364
+XCOMET-QE-Ensemble[noref]     6 0.714   6 0.507  11 0.397   5 0.380
+_BLEURT-20                    7 0.713   8 0.492   8 0.418   7 0.371
+MetricX-23-QE[noref]          8 0.710   3 0.511  13 0.387  10 0.359
+_CometKiwi[noref]             9 0.704  12 0.463  16 0.375   4 0.388
+KG-BERTScore[noref]          10 0.700  14 0.456  15 0.375   8 0.369
+_docWMT22CometDA             11 0.698   9 0.484  14 0.379  16 0.327
+Calibri-COMET22              12 0.697  11 0.477  12 0.397  18 0.311
+_YiSi-1                      13 0.695  18 0.404   4 0.439  15 0.329
+cometoid22-wmt22[noref]      14 0.694   7 0.499  23 0.309  11 0.357
+Calibri-COMET22-QE[noref]    15 0.690  15 0.432  19 0.354  12 0.355
+sescoreX                     16 0.687  13 0.459  18 0.370  21 0.295
+_prismRef                    17 0.685  25 0.349   6 0.428  14 0.332
+_docWMT22CometKiwiDA[noref]  18 0.682  16 0.426  20 0.324  13 0.340
+_BERTscore                   19 0.679  24 0.355   9 0.412  19 0.309
+mre-score-labse-regular      20 0.672  21 0.376  10 0.407  24 0.251
+MaTESe                       21 0.671  29 0.330  17 0.373  17 0.325
+_MS-COMET-QE-22[noref]       22 0.660  19 0.400  29 0.252  20 0.306
+tokengram_F                  23 0.652  27 0.340  22 0.311  23 0.262
+_chrF                        24 0.651  28 0.336  24 0.308  22 0.263
+XLsim                        25 0.651  22 0.372  21 0.314  28 0.218
+MEE4                         26 0.648  23 0.360  25 0.291  25 0.236
+_f200spBLEU                  27 0.642  26 0.343  26 0.287  26 0.220
+eBLEU                        28 0.636  30 0.317  27 0.280  27 0.219
+SENTINEL-CAND-DA[noref]      29 0.632  17 0.406  31 0.168  29 0.215
+_BLEU                        30 0.630  31 0.310  28 0.260  30 0.208
+SENTINEL-CAND-MQM[noref]     31 0.617  20 0.396  32 0.104  31 0.201
+embed_llama                  32 0.595  32 0.242  30 0.188  32 0.138
+_prismSrc[noref]             33 0.547  34 0.102  33 0.100  33 0.078
+_Random-sysname[noref]       34 0.533  33 0.124  34 0.057  34 0.019
+SENTINEL-REF-DA              35 0.500  35 0.000  35 0.000  35 0.000
+SENTINEL-REF-MQM             36 0.500  36 0.000  36 0.000  36 0.000
+SENTINEL-SRC-DA[noref]       37 0.500  37 0.000  37 0.000  37 0.000
+SENTINEL-SRC-MQM[noref]      38 0.500  38 0.000  38 0.000  38 0.000
+
+
+
+
+
+\begin{tabular}{l|rr|rr|rr|rr}
+\toprule
+lang: & \multicolumn{2}{|l}{} & \multicolumn{2}{|l}{en-de} & \multicolumn{2}{|l}{he-en} & \multicolumn{2}{|l}{zh-en} \\
+level: & \multicolumn{2}{|l}{} & \multicolumn{2}{|l}{seg} & \multicolumn{2}{|l}{seg} & \multicolumn{2}{|l}{seg} \\
+corr\_fcn: & \multicolumn{2}{|l}{} & \multicolumn{2}{|l}{pearson} & \multicolumn{2}{|l}{pearson} & \multicolumn{2}{|l}{pearson} \\
+metric & \multicolumn{2}{|l}{avg-corr} & \multicolumn{2}{|l}{task1} & \multicolumn{2}{|l}{task2} & \multicolumn{2}{|l}{task3} \\
+\midrule
+XCOMET-Ensemble & \textbf{1} & \textbf{0.740} & 2 & 0.538 & \textbf{1} & \textbf{0.479} & 3 & 0.421 \\
+mbr-metricx-qe* & 2 & 0.738 & \textbf{1} & \textbf{0.543} & 2 & 0.448 & \textbf{1} & \textbf{0.436} \\
+GEMBA-MQM* & 3 & 0.724 & 10 & 0.482 & 5 & 0.431 & 2 & 0.434 \\
+MetricX-23 & 4 & 0.720 & 5 & 0.507 & 3 & 0.441 & 6 & 0.373 \\
+\underline{COMET} & 5 & 0.715 & 4 & 0.508 & 7 & 0.421 & 9 & 0.364 \\
+XCOMET-QE-Ensemble* & 6 & 0.714 & 6 & 0.507 & 11 & 0.397 & 5 & 0.380 \\
+\underline{BLEURT-20} & 7 & 0.713 & 8 & 0.492 & 8 & 0.418 & 7 & 0.371 \\
+MetricX-23-QE* & 8 & 0.710 & 3 & 0.511 & 13 & 0.387 & 10 & 0.359 \\
+\underline{CometKiwi}* & 9 & 0.704 & 12 & 0.463 & 16 & 0.375 & 4 & 0.388 \\
+KG-BERTScore* & 10 & 0.700 & 14 & 0.456 & 15 & 0.375 & 8 & 0.369 \\
+\underline{docWMT22CometDA} & 11 & 0.698 & 9 & 0.484 & 14 & 0.379 & 16 & 0.327 \\
+Calibri-COMET22 & 12 & 0.697 & 11 & 0.477 & 12 & 0.397 & 18 & 0.311 \\
+\underline{YiSi-1} & 13 & 0.695 & 18 & 0.404 & 4 & 0.439 & 15 & 0.329 \\
+cometoid22-wmt22* & 14 & 0.694 & 7 & 0.499 & 23 & 0.309 & 11 & 0.357 \\
+Calibri-COMET22-QE* & 15 & 0.690 & 15 & 0.432 & 19 & 0.354 & 12 & 0.355 \\
+sescoreX & 16 & 0.687 & 13 & 0.459 & 18 & 0.370 & 21 & 0.295 \\
+\underline{prismRef} & 17 & 0.685 & 25 & 0.349 & 6 & 0.428 & 14 & 0.332 \\
+\underline{docWMT22CometKiwiDA}* & 18 & 0.682 & 16 & 0.426 & 20 & 0.324 & 13 & 0.340 \\
+\underline{BERTscore} & 19 & 0.679 & 24 & 0.355 & 9 & 0.412 & 19 & 0.309 \\
+mre-score-labse-regular & 20 & 0.672 & 21 & 0.376 & 10 & 0.407 & 24 & 0.251 \\
+MaTESe & 21 & 0.671 & 29 & 0.330 & 17 & 0.373 & 17 & 0.325 \\
+\underline{MS-COMET-QE-22}* & 22 & 0.660 & 19 & 0.400 & 29 & 0.252 & 20 & 0.306 \\
+tokengram\_F & 23 & 0.652 & 27 & 0.340 & 22 & 0.311 & 23 & 0.262 \\
+\underline{chrF} & 24 & 0.651 & 28 & 0.336 & 24 & 0.308 & 22 & 0.263 \\
+XLsim & 25 & 0.651 & 22 & 0.372 & 21 & 0.314 & 28 & 0.218 \\
+MEE4 & 26 & 0.648 & 23 & 0.360 & 25 & 0.291 & 25 & 0.236 \\
+\underline{f200spBLEU} & 27 & 0.642 & 26 & 0.343 & 26 & 0.287 & 26 & 0.220 \\
+eBLEU & 28 & 0.636 & 30 & 0.317 & 27 & 0.280 & 27 & 0.219 \\
+SENTINEL-CAND-DA* & 29 & 0.632 & 17 & 0.406 & 31 & 0.168 & 29 & 0.215 \\
+\underline{BLEU} & 30 & 0.630 & 31 & 0.310 & 28 & 0.260 & 30 & 0.208 \\
+SENTINEL-CAND-MQM* & 31 & 0.617 & 20 & 0.396 & 32 & 0.104 & 31 & 0.201 \\
+embed\_llama & 32 & 0.595 & 32 & 0.242 & 30 & 0.188 & 32 & 0.138 \\
+\underline{prismSrc}* & 33 & 0.547 & 34 & 0.102 & 33 & 0.100 & 33 & 0.078 \\
+\underline{Random-sysname}* & 34 & 0.533 & 33 & 0.124 & 34 & 0.057 & 34 & 0.019 \\
+SENTINEL-REF-DA & 35 & 0.500 & 35 & 0.000 & 35 & 0.000 & 35 & 0.000 \\
+SENTINEL-REF-MQM & 36 & 0.500 & 36 & 0.000 & 36 & 0.000 & 36 & 0.000 \\
+SENTINEL-SRC-DA* & 37 & 0.500 & 37 & 0.000 & 37 & 0.000 & 37 & 0.000 \\
+SENTINEL-SRC-MQM* & 38 & 0.500 & 38 & 0.000 & 38 & 0.000 & 38 & 0.000 \\
+\bottomrule
+\end{tabular}
+

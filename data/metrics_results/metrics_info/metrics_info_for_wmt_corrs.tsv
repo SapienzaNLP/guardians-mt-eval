@@ -1,0 +1,6 @@
+SENTINEL-CAND-MQM	yes	data/metrics_results/metrics_outputs/wmt23/zh-en/SENTINEL_CAND_MQM
+SENTINEL-SRC-MQM	yes	data/metrics_results/metrics_outputs/wmt23/zh-en/SENTINEL_SRC_MQM
+SENTINEL-REF-MQM	no	data/metrics_results/metrics_outputs/wmt23/zh-en/SENTINEL_REF_MQM
+SENTINEL-CAND-DA	yes	data/metrics_results/metrics_outputs/wmt23/zh-en/SENTINEL_CAND_DA
+SENTINEL-SRC-DA	yes	data/metrics_results/metrics_outputs/wmt23/zh-en/SENTINEL_SRC_DA
+SENTINEL-REF-DA	no	data/metrics_results/metrics_outputs/wmt23/zh-en/SENTINEL_REF_DA

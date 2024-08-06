@@ -1,4 +1,4 @@
-fake_regression_metric:
+sentinel_regression_metric:
   class_path: sentinel_metric.models.SentinelRegressionMetric
   init_args:
     name: sentinel_regression_metric

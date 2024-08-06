@@ -55,8 +55,7 @@ def get_metric_name2lp_scores(
                                          language pairs.
 
     Returns:
-        metric_name2lp_scores (Dict[str, Dict[str, Dict[str, List[float]]]): Dictionary with the scores for each metric.
-        metric_name2ref_to_use (Dict[str, Dict[str, str]]): Dictionary with the used refs.
+        Tuple[Dict[str, Dict[str, Dict[str, List[float]]], Dict[str, Dict[str, str]]]: Dicts with scores and refs.
     """
     metric_name2lp_scores, metric_name2ref_to_use = dict(), dict()
 
@@ -94,6 +93,24 @@ def get_metric_name2lp_scores(
                         )
 
     return metric_name2lp_scores, metric_name2ref_to_use
+
+
+def compute_final_wmt_ranking_command() -> None:
+    """Command to compute the final WMT-23 ranking."""
+    parser = read_arguments()
+    args = parser.parse_args()
+
+    metric_name2lp_scores, metric_name2ref_to_use = get_metric_name2lp_scores(
+        args.metrics_to_evaluate_info_filepath, args.metrics_outputs_path
+    )
+    compute_final_wmt_ranking(
+        metric_name2lp_scores,
+        metric_name2ref_to_use,
+        args.k,
+        args.only_seg_level,
+        args.item_for_seg_level_pearson,
+        args.only_pearson,
+    )
 
 
 def compute_final_wmt_ranking(
@@ -166,17 +183,4 @@ def compute_final_wmt_ranking(
 
 
 if __name__ == "__main__":
-    parser = read_arguments()
-    args = parser.parse_args()
-
-    metric_name2lp_scores, metric_name2ref_to_use = get_metric_name2lp_scores(
-        args.metrics_to_evaluate_info_filepath, args.metrics_outputs_path
-    )
-    compute_final_wmt_ranking(
-        metric_name2lp_scores,
-        metric_name2ref_to_use,
-        args.k,
-        args.only_seg_level,
-        args.item_for_seg_level_pearson,
-        args.only_pearson,
-    )
+    compute_final_wmt_ranking_command()

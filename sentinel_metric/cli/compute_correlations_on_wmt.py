@@ -1,18 +1,17 @@
 import pickle
 from argparse import ArgumentParser
 from pathlib import Path
-from pprint import pp
 from typing import Optional, List, Dict, Tuple, Callable
 
 import scipy.stats
 from mt_metrics_eval import data, stats
 
-from sentinel_metric.scripts.score import get_wmt_testset
+from sentinel_metric.cli.score import get_wmt_testset
 
 
 def read_arguments() -> ArgumentParser:
     parser = ArgumentParser(
-        description="Command to compute correlations based on WMT data."
+        description="Command to compute correlations between metrics' scores and WMT gold data."
     )
     parser.add_argument(
         "--metrics-to-evaluate-info-filepath",
@@ -84,34 +83,24 @@ def read_arguments() -> ArgumentParser:
         help="Sample rate to pass to tau_optimization for 'KendallWithTiesOpt' (used only in wmt23). Default: 1.0.",
     )
     parser.add_argument(
-        "--macro",
-        action="store_true",
-        help="Whether to compute correlations with a plain average over row- or item-wise correlations.",
-    )
-    parser.add_argument(
         "--run-statistical-significance-for-item-grouping",
         action="store_true",
-        help="Whether to run statistical significance test for correlations with 'item' grouping (it is very slow).",
+        help="Whether to run statistical significance test for correlations with item grouping (it is very slow).",
     )
     parser.add_argument(
         "--run-statistical-significance-for-sys-grouping",
         action="store_true",
-        help="Whether to run statistical significance test for correlations with 'sys' grouping (it is very slow).",
+        help="Whether to run statistical significance test for correlations with sys grouping (it is very slow).",
     )
     parser.add_argument(
         "--compute-only-seg-level-pearson-correlations",
         action="store_true",
-        help="Whether to compute only seg-level Pearson correlations wrt human judgements.",
+        help="Whether to compute only seg-level Pearson correlations with human judgements.",
     )
     parser.add_argument(
         "--compute-only-seg-level-kendall-correlations",
         action="store_true",
-        help="Whether to compute only seg-level KendallTau correlations wrt human judgements.",
-    )
-    parser.add_argument(
-        "--print-also-in-tsv-and-latex-formats",
-        action="store_true",
-        help="Whether to print the final rankings also in tsv and LaTeX formats.",
+        help="Whether to compute only seg-level KendallTau correlations with human judgements.",
     )
     return parser
 
@@ -137,10 +126,9 @@ def get_metric_name2scores(
             info = metric_info_line.strip().split("\t")
             if len(info) != 3:
                 raise ValueError(
-                    f"Error during parsing the file {metrics_to_evaluate_filepath}, the line {info} should"
-                    " contain 3 tab-separated elements: 'metric_name', 'is_refless' and 'output_scores_dir',"
-                    " or 4 tab-separated elements: 'metric_name_1', 'is_metric_1_refless', 'metric_name_2'"
-                    " and 'is_metric_2_refless'."
+                    f"Error during parsing the file {metrics_to_evaluate_filepath}! The line {info} should"
+                    " contain 3 tab-separated elements: 'metric_name', 'is_refless', and 'output_scores_dir',"
+                    f" but it contains {len(info)} tab-separated elements."
                 )
             metric_name, is_refless, output_scores_dir = info
             output_scores_dir = (
@@ -179,12 +167,10 @@ def print_wmt_human_ratings_correlation_reports(
     block_size: int,
     pvalue: float,
     sample_rate: float,
-    macro: bool,
     run_statistical_significance_for_item_grouping: bool,
     run_statistical_significance_for_sys_grouping: bool,
     compute_only_seg_level_pearson_correlations: bool,
     compute_only_seg_level_kendall_correlations: bool,
-    print_also_in_tsv_and_latex_formats: bool,
     metric_name2scores: Dict[
         str, Tuple[Optional[Dict[str, List[float]]], Optional[Dict[str, List[float]]]]
     ],
@@ -202,16 +188,14 @@ def print_wmt_human_ratings_correlation_reports(
         block_size (int): The size of blocks for 'early stopping' checks during resampling.
         pvalue (float): The p-value for the significance test.
         sample_rate (float): Sample rate to pass to tau_optimization for 'KendallWithTiesOpt' (used only in wmt23).
-        macro (bool): Whether to compute correlations with a plain average over row- or item-wise correlations.
         run_statistical_significance_for_item_grouping (bool): Whether to run statistical significance test for
-                                                               correlations with 'item' grouping (it is very slow).
+                                                               correlations with item grouping (it is very slow).
         run_statistical_significance_for_sys_grouping (bool) Whether to run statistical significance test for
-                                                             correlations with 'sys' grouping (it is very slow).
+                                                             correlations with sys grouping (it is very slow).
         compute_only_seg_level_pearson_correlations (bool): Whether to compute only seg-level Pearson correlations wrt
                                                             human judgements.
         compute_only_seg_level_kendall_correlations (bool): Whether to compute only seg-level KendallTau correlations
                                                             wrt human judgements.
-        print_also_in_tsv_and_latex_formats (bool): Whether to print the final rankings also in tsv and LaTeX formats.
         metric_name2scores (Dict[str, Tuple[Optional[Dict[str, List[float]]], Optional[Dict[str, List[float]]]]]):
                             Dictionary from metric name to its scores.
     """
@@ -257,40 +241,33 @@ def print_wmt_human_ratings_correlation_reports(
                 sig_matrix,
                 draws_index,
                 draws_list,
-                metric_name2best_tie_threshold,
             ) = data.CompareMetrics(
                 metric_corrs,
                 stats.KendallWithTiesOpt,
                 average_by,
-                macro,
                 k_for_stat_sign,
                 psd,
                 pvalue,
                 perm_test="pairs",
-                return_metric_name2best_tie_threshold=True,
                 sample_rate=sample_rate,
             )
             print("\n")
             print(
-                f"{level}-level KendallWithTiesOpt corrs with '{average_by}' grouping strategy:"
+                f"{level}-level KendallWithTiesOpt corrs with {average_by} grouping strategy:"
             )
             data.PrintMetricComparison(
                 corrs_and_ranks,
                 sig_matrix,
                 pvalue,
                 testset,
-                print_also_in_tsv_and_latex_formats=print_also_in_tsv_and_latex_formats,
             )
-            print("\n")
-            print("Best tie thresholds:")
-            pp(metric_name2best_tie_threshold)
             print("\n")
         else:
             corr_fcn_name = (
                 "Kendall Tau" if corr_fcn == scipy.stats.kendalltau else "Pearson"
             )
             corrs_and_ranks, sig_matrix, draws_index, draws_list = data.CompareMetrics(
-                metric_corrs, corr_fcn, average_by, macro, k_for_stat_sign, psd, pvalue
+                metric_corrs, corr_fcn, average_by, k_for_stat_sign, psd, pvalue
             )
             print("\n")
             print(
@@ -301,7 +278,6 @@ def print_wmt_human_ratings_correlation_reports(
                 sig_matrix,
                 pvalue,
                 testset,
-                print_also_in_tsv_and_latex_formats=print_also_in_tsv_and_latex_formats,
             )
             print("\n")
 
@@ -343,7 +319,8 @@ def print_wmt_human_ratings_correlation_reports(
         print_metric_comparison_from_corrs(corrs, scipy.stats.pearsonr, "none", "sys")
 
 
-if __name__ == "__main__":
+def compute_wmt_corrs_command() -> None:
+    """Command to compute correlations between metrics' scores and WMT gold data."""
     parser = read_arguments()
     args = parser.parse_args()
 
@@ -366,11 +343,13 @@ if __name__ == "__main__":
         args.block_size,
         args.pvalue,
         args.sample_rate,
-        args.macro,
         args.run_statistical_significance_for_item_grouping,
         args.run_statistical_significance_for_sys_grouping,
         args.compute_only_seg_level_pearson_correlations,
         args.compute_only_seg_level_kendall_correlations,
-        args.print_also_in_tsv_and_latex_formats,
         metric_name2scores,
     )
+
+
+if __name__ == "__main__":
+    compute_wmt_corrs_command()

@@ -1,0 +1,96 @@
+lang:                                     en-de     he-en     zh-en
+level:                                      seg       seg       seg
+corr_fcn:                               pearson   pearson   pearson
+metric                       avg-corr     task1     task2     task3
+---------------------------  --------  --------  --------  --------
+XCOMET-Ensemble               1 0.817   1 0.695   1 0.556   1 0.650
+XCOMET-QE-Ensemble[noref]     2 0.804   2 0.679   4 0.498   3 0.647
+MetricX-23-QE[noref]          3 0.799   3 0.626   3 0.520   2 0.647
+MetricX-23                    4 0.793   4 0.585   2 0.548   4 0.625
+MaTESe                        5 0.754   7 0.554   5 0.459   8 0.511
+SENTINEL-CAND-MQM[noref]      6 0.747   6 0.561  19 0.339   5 0.580
+mbr-metricx-qe[noref]         7 0.745   5 0.571   6 0.411  10 0.489
+sescoreX                      8 0.740   8 0.519  13 0.385   7 0.536
+GEMBA-MQM[noref]              9 0.725  10 0.502   7 0.401  12 0.449
+SENTINEL-SRC-MQM[noref]      10 0.724  13 0.469  21 0.334   6 0.540
+_CometKiwi[noref]            11 0.717  12 0.475  12 0.387  14 0.442
+cometoid22-wmt22[noref]      12 0.714  17 0.441  17 0.365  11 0.479
+Calibri-COMET22-QE[noref]    13 0.713  18 0.441  11 0.395  13 0.443
+SENTINEL-REF-MQM             14 0.712  14 0.464  23 0.301   9 0.506
+KG-BERTScore[noref]          15 0.711  15 0.451  14 0.382  15 0.430
+_BLEURT-20                   16 0.707  11 0.484  15 0.382  19 0.378
+_COMET                       17 0.705  19 0.432   8 0.401  16 0.396
+Calibri-COMET22              18 0.702  21 0.413   9 0.401  17 0.396
+_docWMT22CometKiwiDA[noref]  19 0.686  16 0.444  25 0.286  18 0.387
+_docWMT22CometDA             20 0.681  22 0.394  18 0.339  23 0.353
+_YiSi-1                      21 0.675  23 0.366  10 0.395  25 0.290
+_prismRef                    22 0.670   9 0.516  22 0.319  28 0.183
+SENTINEL-CAND-DA[noref]      23 0.667  24 0.365  26 0.264  21 0.372
+_MS-COMET-QE-22[noref]       24 0.662  26 0.310  24 0.295  22 0.367
+SENTINEL-REF-DA              25 0.653  27 0.309  29 0.237  20 0.373
+_BERTscore                   26 0.649  25 0.325  20 0.335  26 0.236
+SENTINEL-SRC-DA[noref]       27 0.637  31 0.235  28 0.248  24 0.341
+_prismSrc[noref]             28 0.631  20 0.425  36 0.140  27 0.223
+mre-score-labse-regular      29 0.606  36 0.111  16 0.378  30 0.145
+embed_llama                  30 0.604  28 0.250  35 0.215  29 0.161
+XLsim                        31 0.597  29 0.239  30 0.233  32 0.111
+_f200spBLEU                  32 0.596  30 0.237  31 0.230  33 0.108
+MEE4                         33 0.594  34 0.202  27 0.256  34 0.105
+_BLEU                        34 0.589  35 0.192  34 0.220  31 0.119
+_chrF                        35 0.586  32 0.232  33 0.221  35 0.063
+tokengram_F                  36 0.586  33 0.227  32 0.226  36 0.060
+_Random-sysname[noref]       37 0.521  37 0.064  38 0.041  37 0.018
+eBLEU                        38 0.506  38-0.011  37 0.131  38-0.084
+
+
+
+
+
+\begin{tabular}{l|rr|rr|rr|rr}
+\toprule
+lang: & \multicolumn{2}{|l}{} & \multicolumn{2}{|l}{en-de} & \multicolumn{2}{|l}{he-en} & \multicolumn{2}{|l}{zh-en} \\
+level: & \multicolumn{2}{|l}{} & \multicolumn{2}{|l}{seg} & \multicolumn{2}{|l}{seg} & \multicolumn{2}{|l}{seg} \\
+corr\_fcn: & \multicolumn{2}{|l}{} & \multicolumn{2}{|l}{pearson} & \multicolumn{2}{|l}{pearson} & \multicolumn{2}{|l}{pearson} \\
+metric & \multicolumn{2}{|l}{avg-corr} & \multicolumn{2}{|l}{task1} & \multicolumn{2}{|l}{task2} & \multicolumn{2}{|l}{task3} \\
+\midrule
+XCOMET-Ensemble & \textbf{1} & \textbf{0.817} & \textbf{1} & \textbf{0.695} & \textbf{1} & \textbf{0.556} & \textbf{1} & \textbf{0.650} \\
+XCOMET-QE-Ensemble* & 2 & 0.804 & 2 & 0.679 & 4 & 0.498 & 3 & 0.647 \\
+MetricX-23-QE* & 3 & 0.799 & 3 & 0.626 & 3 & 0.520 & 2 & 0.647 \\
+MetricX-23 & 4 & 0.793 & 4 & 0.585 & 2 & 0.548 & 4 & 0.625 \\
+MaTESe & 5 & 0.754 & 7 & 0.554 & 5 & 0.459 & 8 & 0.511 \\
+SENTINEL-CAND-MQM* & 6 & 0.747 & 6 & 0.561 & 19 & 0.339 & 5 & 0.580 \\
+mbr-metricx-qe* & 7 & 0.745 & 5 & 0.571 & 6 & 0.411 & 10 & 0.489 \\
+sescoreX & 8 & 0.740 & 8 & 0.519 & 13 & 0.385 & 7 & 0.536 \\
+GEMBA-MQM* & 9 & 0.725 & 10 & 0.502 & 7 & 0.401 & 12 & 0.449 \\
+SENTINEL-SRC-MQM* & 10 & 0.724 & 13 & 0.469 & 21 & 0.334 & 6 & 0.540 \\
+\underline{CometKiwi}* & 11 & 0.717 & 12 & 0.475 & 12 & 0.387 & 14 & 0.442 \\
+cometoid22-wmt22* & 12 & 0.714 & 17 & 0.441 & 17 & 0.365 & 11 & 0.479 \\
+Calibri-COMET22-QE* & 13 & 0.713 & 18 & 0.441 & 11 & 0.395 & 13 & 0.443 \\
+SENTINEL-REF-MQM & 14 & 0.712 & 14 & 0.464 & 23 & 0.301 & 9 & 0.506 \\
+KG-BERTScore* & 15 & 0.711 & 15 & 0.451 & 14 & 0.382 & 15 & 0.430 \\
+\underline{BLEURT-20} & 16 & 0.707 & 11 & 0.484 & 15 & 0.382 & 19 & 0.378 \\
+\underline{COMET} & 17 & 0.705 & 19 & 0.432 & 8 & 0.401 & 16 & 0.396 \\
+Calibri-COMET22 & 18 & 0.702 & 21 & 0.413 & 9 & 0.401 & 17 & 0.396 \\
+\underline{docWMT22CometKiwiDA}* & 19 & 0.686 & 16 & 0.444 & 25 & 0.286 & 18 & 0.387 \\
+\underline{docWMT22CometDA} & 20 & 0.681 & 22 & 0.394 & 18 & 0.339 & 23 & 0.353 \\
+\underline{YiSi-1} & 21 & 0.675 & 23 & 0.366 & 10 & 0.395 & 25 & 0.290 \\
+\underline{prismRef} & 22 & 0.670 & 9 & 0.516 & 22 & 0.319 & 28 & 0.183 \\
+SENTINEL-CAND-DA* & 23 & 0.667 & 24 & 0.365 & 26 & 0.264 & 21 & 0.372 \\
+\underline{MS-COMET-QE-22}* & 24 & 0.662 & 26 & 0.310 & 24 & 0.295 & 22 & 0.367 \\
+SENTINEL-REF-DA & 25 & 0.653 & 27 & 0.309 & 29 & 0.237 & 20 & 0.373 \\
+\underline{BERTscore} & 26 & 0.649 & 25 & 0.325 & 20 & 0.335 & 26 & 0.236 \\
+SENTINEL-SRC-DA* & 27 & 0.637 & 31 & 0.235 & 28 & 0.248 & 24 & 0.341 \\
+\underline{prismSrc}* & 28 & 0.631 & 20 & 0.425 & 36 & 0.140 & 27 & 0.223 \\
+mre-score-labse-regular & 29 & 0.606 & 36 & 0.111 & 16 & 0.378 & 30 & 0.145 \\
+embed\_llama & 30 & 0.604 & 28 & 0.250 & 35 & 0.215 & 29 & 0.161 \\
+XLsim & 31 & 0.597 & 29 & 0.239 & 30 & 0.233 & 32 & 0.111 \\
+\underline{f200spBLEU} & 32 & 0.596 & 30 & 0.237 & 31 & 0.230 & 33 & 0.108 \\
+MEE4 & 33 & 0.594 & 34 & 0.202 & 27 & 0.256 & 34 & 0.105 \\
+\underline{BLEU} & 34 & 0.589 & 35 & 0.192 & 34 & 0.220 & 31 & 0.119 \\
+\underline{chrF} & 35 & 0.586 & 32 & 0.232 & 33 & 0.221 & 35 & 0.063 \\
+tokengram\_F & 36 & 0.586 & 33 & 0.227 & 32 & 0.226 & 36 & 0.060 \\
+\underline{Random-sysname}* & 37 & 0.521 & 37 & 0.064 & 38 & 0.041 & 37 & 0.018 \\
+eBLEU & 38 & 0.506 & 38 & -0.011 & 37 & 0.131 & 38 & -0.084 \\
+\bottomrule
+\end{tabular}
+

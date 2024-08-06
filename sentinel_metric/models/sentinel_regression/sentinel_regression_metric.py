@@ -177,8 +177,7 @@ class SentinelRegressionMetric(RegressionMetricModel):
             mt_sentemb [torch.Tensor]: Sentence embedding that will be the input of the Feed-Forward neural network.
 
         Return:
-            Prediction object with sent
-            ence scores.
+            Prediction object with sentence scores.
         """
         return Prediction(score=self.estimator(sentemb).view(-1))
 

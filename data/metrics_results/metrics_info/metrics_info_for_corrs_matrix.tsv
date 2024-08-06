@@ -1,0 +1,16 @@
+XCOMET-Ensemble	no	None
+XCOMET-QE-Ensemble	yes	None
+MetricX-23	no	None
+MetricX-23-QE	yes	None
+mbr-metricx-qe	yes	None
+CometKiwi	yes	None
+COMET	no	None
+BLEURT-20	no	None
+GEMBA-MQM	yes	None
+MaTESe	no	None
+BERTscore	no	None
+chrF	no	None
+BLEU	no	None
+SENTINEL-CAND-MQM	yes	data/metrics_results/metrics_outputs/wmt23/zh-en/SENTINEL_CAND_MQM
+SENTINEL-SRC-MQM	yes	data/metrics_results/metrics_outputs/wmt23/zh-en/SENTINEL_SRC_MQM
+SENTINEL-REF-MQM	no	data/metrics_results/metrics_outputs/wmt23/zh-en/SENTINEL_REF_MQM
