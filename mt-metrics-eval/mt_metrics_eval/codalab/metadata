@@ -1,2 +1,0 @@
-command: python3 $program/eval.py $input $output
-description: Competition evaluation program. Computes Pearson and Kendall correlation.
