@@ -144,7 +144,9 @@ MT system: NLLB_Greedy  Metric system score: 0.0836.
 MT system: ZengHuiMT    Metric system score: -0.0446.
 ```
 
-Where `--out-path` defines the path to the directory where the segment and system scores returned by the metric will be saved (`seg_scores.pickle` and `sys_scores.pickle`). Alternatively, you can provide the path to the model checkpoint using `--sentinel-metric-model-checkpoint-path` instead of specifying the Hugging Face model name with `--sentinel-metric-model-name`. You can also save the output scores to a json file using the `--out-json` argument. Additionally, the command supports the use of COMET metrics, which can be specified using the `--comet-metric-model-name` (downloaded from Hugging Face) or `--comet-metric-model-checkpoint-path` argument. For a complete description of the command (including also scoring csv data, and specifying a WMT domain), run:
+Where `--out-path` defines the path to the directory where the segment and system scores returned by the metric will be saved (`seg_scores.pickle` and `sys_scores.pickle`). Alternatively, you can provide the path to the model checkpoint using `--sentinel-metric-model-checkpoint-path` instead of specifying the Hugging Face model name with `--sentinel-metric-model-name`. You can also save the output scores to a json file using the `--out-json` argument. Additionally, the command supports the use of COMET metrics, which can be specified using the `--comet-metric-model-name` (downloaded from Hugging Face) or `--comet-metric-model-checkpoint-path` argument.
+
+For a complete description of the command (including also scoring csv data, and specifying a WMT domain), run:
 
 ```bash
 sentinel-metric-score --help
