@@ -26,7 +26,7 @@ The code in this repo requires Python 3.10 or higher. We recommend creating a ne
 
 ```bash
 conda create -n guardians-mt-eval python=3.10
-conda activate guardians-mt-eval val
+conda activate guardians-mt-eval
 pip install --upgrade pip
 pip install -e .
 ```
