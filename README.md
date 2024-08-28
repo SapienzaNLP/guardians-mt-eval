@@ -253,20 +253,19 @@ Output:
 ```
 
 ## Cite this work
-This work has been published at [ACL 2024 (main conference)](https://2024.aclweb.org/program/main_conference_papers/). If you use any part, please consider citing our paper as follows:
+This work has been published at [ACL 2024 (Main Conference)](https://aclanthology.org/2024.acl-long.856/). If you use any part, please consider citing our paper as follows:
 
 ```bibtex
 @inproceedings{perrella-etal-2024-guardians,
     title = "Guardians of the Machine Translation Meta-Evaluation: Sentinel Metrics Fall In!",
-    author = "Perrella, Stefano and
-      Proietti, Lorenzo  and
-      Scirè, Alessandro and
-      Barba, Edoardo and
-      Navigli, Roberto",
-        booktitle = "Proceedings of the Annual Meeting of the Association for Computational Linguistics (ACL 2024)",
-    year      = "2024",
-    address   = "Bangkok, Thailand",
-    publisher = "Association for Computational Linguistics",
+    author = "Perrella, Stefano  and Proietti, Lorenzo  and Scir{\`e}, Alessandro  and Barba, Edoardo  and Navigli, Roberto",
+    editor = "Ku, Lun-Wei  and Martins, Andre  and Srikumar, Vivek",
+    booktitle = "Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = aug,
+    year = "2024",
+    address = "Bangkok, Thailand", publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.acl-long.856",
+    pages = "16216--16244",
 }
 ```
 
