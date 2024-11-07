@@ -106,7 +106,17 @@ MT system: SOURCE       Metric system score: 0.3241.
 You can also score data samples from the test sets of the WMT Metrics Shared Tasks. For example:
 
 ```bash
-sentinel-metric-score --sentinel-metric-model-name sapienzanlp/sentinel-cand-mqm --batch-size 128 --testset-name wmt23 --lp zh-en --ref-to-use refA --include-human --include-outliers --include-ref-to-use --only-system --out-path data/metrics_results/metrics_outputs/wmt23/zh-en/SENTINEL_CAND_MQM 
+sentinel-metric-score \
+  --sentinel-metric-model-name sapienzanlp/sentinel-cand-mqm \
+  --batch-size 128 \
+  --testset-name wmt23 \
+  --lp zh-en \
+  --ref-to-use refA \
+  --include-human \
+  --include-outliers \
+  --include-ref-to-use \
+  --only-system \
+  --out-path data/metrics_results/metrics_outputs/wmt23/zh-en/SENTINEL_CAND_MQM 
 ```
 
 Output:
@@ -157,7 +167,12 @@ sentinel-metric-score --help
 The `sentinel-metric-compute-wmt23-ranking` command computes the WMT23 metrics ranking. For example, to compute the segment-level metrics ranking:
 
 ```bash
-sentinel-metric-compute-wmt23-ranking --metrics-to-evaluate-info-filepath data/metrics_results/metrics_info/metrics_info_for_ranking.tsv --metrics-outputs-path data/metrics_results/metrics_outputs/wmt23 --k 0 --only-seg-level > data/metrics_results/metrics_rankings/seg_level_wmt23_final_ranking.txt
+sentinel-metric-compute-wmt23-ranking \
+  --metrics-to-evaluate-info-filepath data/metrics_results/metrics_info/metrics_info_for_ranking.tsv \
+  --metrics-outputs-path data/metrics_results/metrics_outputs/wmt23 \
+  --k 0 \
+  --only-seg-level \
+  > data/metrics_results/metrics_rankings/seg_level_wmt23_final_ranking.txt
 ```
 
 To group-by-item (Segment Grouping in the paper) when computing the segment-level Pearson correlation, use `--item-for-seg-level-pearson`. The output is located in [data/metrics_results/metrics_rankings/item_group_seg_level_wmt23_final_ranking.txt](data/metrics_results/metrics_rankings/item_group_seg_level_wmt23_final_ranking.txt). You also have the option to limit the segment-level ranking to using the Pearson correlation only, excluding the accuracy measure introduced by [Deutsch et al. (2023)](https://aclanthology.org/2023.emnlp-main.798/). To do this, use the `--only-pearson` flag. The output files will be located at [data/metrics_results/metrics_rankings/only_pearson_seg_level_wmt23_final_ranking.txt](data/metrics_results/metrics_rankings/only_pearson_seg_level_wmt23_final_ranking.txt) and [data/metrics_results/metrics_rankings/only_item_group_pearson_seg_level_wmt23_final_ranking.txt](data/metrics_results/metrics_rankings/only_item_group_pearson_seg_level_wmt23_final_ranking.txt).
@@ -175,7 +190,14 @@ sentinel-metric-compute-wmt23-ranking --help
 The `sentinel-metric-compute-wmt-corrs` command can computes the metrics rankings on WMT for all possible combinations of correlation function and grouping strategy in a given language pair. For example, for zh-en language direction, in WMT23, you can use the following command:
 
 ```bash
-sentinel-metric-compute-wmt-corrs --metrics-to-evaluate-info-filepath data/metrics_results/metrics_info/metrics_info_for_wmt_corrs.tsv --testset-name wmt23 --lp zh-en --ref-to-use refA --primary-metrics --k 0 > data/metrics_results/wmt_corrs/wmt23/zh-en.txt 
+sentinel-metric-compute-wmt-corrs \
+  --metrics-to-evaluate-info-filepath data/metrics_results/metrics_info/metrics_info_for_wmt_corrs.tsv \
+  --testset-name wmt23 \
+  --lp zh-en \
+  --ref-to-use refA \
+  --primary-metrics \
+  --k 0 \
+  > data/metrics_results/wmt_corrs/wmt23/zh-en.txt 
 ```
 
 Similar to the previous command, you can include additional MT metrics by creating the necessary folders for the desired language pair and adding their info in the [data/metrics_results/metrics_info/metrics_info_for_wmt_corrs.tsv](data/metrics_results/metrics_info/metrics_info_for_wmt_corrs.tsv) file. For each new metric, you have to specify its name, whether it is reference-free, and the path to the folder containing its scores.
@@ -197,7 +219,12 @@ pip install matplotlib==3.9.1 seaborn==0.13.2
 Then, considering zh-en language direction in WMT23 as an example, you can execute the following command:
 
 ```bash
-sentinel-metric-compute-corrs-matrix --metrics-to-evaluate-info-filepath data/metrics_results/metrics_info/metrics_info_for_corrs_matrix.tsv --testset-name wmt23 --lp zh-en --ref-to-use refA --out-file data/metrics_results/corr_matrices/wmt23/zh-en.pdf
+sentinel-metric-compute-corrs-matrix \
+  --metrics-to-evaluate-info-filepath data/metrics_results/metrics_info/metrics_info_for_corrs_matrix.tsv \
+  --testset-name wmt23 \
+  --lp zh-en \
+  --ref-to-use refA \
+  --out-file data/metrics_results/corr_matrices/wmt23/zh-en.pdf
 ```
 
 To specify which MT metrics to include in the correlations matrix, you can edit [data/metrics_results/metrics_info/metrics_info_for_corrs_matrix.tsv](data/metrics_results/metrics_info/metrics_info_for_corrs_matrix.tsv), specifying each metric's name, whether it is reference-free, and the path to its scores (`None` if already included in WMT).
