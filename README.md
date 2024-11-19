@@ -213,7 +213,7 @@ sentinel-metric-compute-wmt-corrs --help
 The `sentinel-metric-compute-corrs-matrix` command computes the correlations matrix for MT metrics in a given language pair, similar to the ones in the Appendix of our paper. To use it, two additional packages are required:
 
 ```bash
-pip install matplotlib==3.9.1 seaborn==0.13.2
+pip install matplotlib>=3.9.1 seaborn>=0.13.2
 ```
 
 Then, considering zh-en language direction in WMT23 as an example, you can execute the following command:
